@@ -3,276 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cpp // cppcrafter</title>
+    <title>cppcrafter | Portfolio</title>
+    
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Подключение шрифта Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Подключение Material Symbols Rounded -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+    
     <style>
-        :root {
-            --bg: #0a0a0c;
-            --card: #121216;
-            --border: #222228;
-            --text: #ececf1;
-            --muted: #888894;
-            --accent: #a855f7;
-            --accent-dim: rgba(168, 85, 247, 0.12);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', -apple-system, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 24px;
-            line-height: 1.5;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 520px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .title h1 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .title span.handle {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--muted);
-            font-weight: 400;
-        }
-
-        .status-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            background: var(--accent-dim);
-            color: var(--accent);
-            padding: 4px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(168, 85, 247, 0.25);
-        }
-
-        .bio {
-            color: var(--muted);
-            font-size: 0.95rem;
-            margin-bottom: 24px;
-        }
-
-        .bio strong {
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .section-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--muted);
-            margin-bottom: 10px;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            background: #18181e;
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 5px 11px;
-            border-radius: 8px;
-            transition: border-color 0.2s, transform 0.15s;
-        }
-
-        .tag:hover {
-            border-color: var(--muted);
-            transform: translateY(-1px);
-        }
-
-        .wallet-box {
-            background: #0d0d10;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: border-color 0.2s, background 0.2s;
-            margin-bottom: 24px;
-            user-select: none;
-        }
-
-        .wallet-box:hover {
-            border-color: var(--accent);
-            background: #111116;
-        }
-
-        .wallet-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            overflow: hidden;
-        }
-
-        .wallet-label {
-            font-size: 0.75rem;
-            color: var(--muted);
-        }
-
-        .wallet-address {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--text);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .copy-btn {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--muted);
-            background: #1a1a22;
-            padding: 5px 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
-        }
-
-        .wallet-box:hover .copy-btn {
-            color: var(--text);
-            border-color: var(--muted);
-        }
-
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-            font-size: 0.85rem;
-        }
-
-        .links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            transition: color 0.2s;
-        }
-
-        .links a:hover {
-            color: var(--text);
-        }
-
-        .sys-info {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--muted);
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center p-4 antialiased text-white relative overflow-hidden">
 
-    <main class="container">
-        <header class="header">
-            <div class="title">
-                <h1>cpp <span class="handle">@cppcrafter</span></h1>
-            </div>
-            <div class="status-badge">14 y.o.</div>
-        </header>
+    <!-- Фоновые декорации для усиления эффекта стекла (опционально) -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#D0BCFF] rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#4F378B] rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
 
-        <p class="bio">
-            Обычный школьник и <strong>вайбкодер</strong>. Пишу скрипты, ботов и собираю пет-проекты под настроение. Люблю минимализм, кодить вместе с нейросетями и ломать то, что работало, чтобы сделать красивее.
+    <!-- Glassmorphism Panel -->
+    <main class="bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col items-center max-w-md w-full shadow-2xl relative z-10">
+        
+        <!-- Avatar Block -->
+        <div class="relative w-32 h-32 rounded-full border-4 border-[#D0BCFF] bg-white/10 flex items-center justify-center overflow-hidden shadow-lg">
+            <!-- Иконка человека (заглушка) -->
+            <span class="material-symbols-rounded absolute text-5xl text-[#D0BCFF]">person</span>
+            <!-- Сама аватарка -->
+            <img src="avatar.jpg" alt="Avatar" class="absolute z-10 w-full h-full object-cover transition-opacity duration-300" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Pale Chain Button -->
+        <a href="https://palechain.sbs" target="_blank" rel="noopener noreferrer" class="mt-4 mb-6 px-5 py-2 bg-[#D0BCFF]/20 hover:bg-[#D0BCFF]/30 text-[#D0BCFF] rounded-full font-semibold transition-colors flex items-center gap-2 shadow-sm border border-[#D0BCFF]/10">
+            <span class="material-symbols-rounded text-xl">link</span>
+            Pale Chain
+        </a>
+
+        <!-- Text Content -->
+        <h1 class="text-4xl font-bold text-white mb-3 text-center tracking-tight">Ку вась!</h1>
+        <p class="text-gray-300 text-lg text-center max-w-sm mb-8 font-medium">
+            мне 14, люблю чет писать вайбкодить, берусь за все невозможное
         </p>
 
-        <div class="section-title">// стек & вайб</div>
-        <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">C / C++</span>
-            <span class="tag">HTML / CSS / JS</span>
-            <span class="tag">Telegram Bots</span>
-            <span class="tag">Gemini</span>
-            <span class="tag">Claude</span>
-            <span class="tag">Vibecoding</span>
-        </div>
-
-        <div class="section-title">// криптокошелёк</div>
-        <div class="wallet-box" onclick="copyWallet()" title="Нажми, чтобы скопировать">
-            <div class="wallet-info">
-                <span class="wallet-label">Wallet Address</span>
-                <span class="wallet-address" id="walletText">chainholder.ton</span>
+        <!-- TON Wallet Button -->
+        <button onclick="copyWallet()" class="bg-[#4F378B] hover:bg-[#D0BCFF] text-white hover:text-[#381E72] transition-colors rounded-2xl px-6 py-3.5 flex items-center justify-between gap-4 font-medium shadow-lg w-full group outline-none focus-visible:ring-2 focus-visible:ring-[#D0BCFF]">
+            <div class="flex flex-col text-left">
+                <span class="text-[10px] uppercase tracking-wider opacity-80 font-bold mb-0.5">TON Адрес</span>
+                <span class="text-base tracking-wide">chainholder.ton</span>
             </div>
-            <span class="copy-btn" id="copyStatus">copy</span>
-        </div>
+            <span id="copy-icon" class="material-symbols-rounded group-hover:scale-110 transition-transform">content_copy</span>
+        </button>
 
-        <footer class="footer">
-            <div class="links">
-                <a href="https://t.me/cppcrafter" target="_blank">telegram</a>
-                <a href="https://github.com/cppcrafter" target="_blank">github</a>
-            </div>
-            <div class="sys-info">ai driven</div>
-        </footer>
     </main>
 
+    <!-- Scripts -->
     <script>
         function copyWallet() {
-            const wallet = document.getElementById('walletText').innerText;
-            const status = document.getElementById('copyStatus');
-            navigator.clipboard.writeText(wallet).then(() => {
-                status.innerText = 'copied!';
-                status.style.color = '#a855f7';
-                status.style.borderColor = '#a855f7';
-                setTimeout(() => {
-                    status.innerText = 'copy';
-                    status.style.color = '';
-                    status.style.borderColor = '';
-                }, 1800);
-            });
+            const address = 'chainholder.ton';
+            
+            // Надежное копирование
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(address);
+            } else {
+                const tempInput = document.createElement("input");
+                tempInput.value = address;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+            }
+            
+            // Анимация иконки
+            const icon = document.getElementById('copy-icon');
+            icon.innerText = 'check';
+            icon.style.color = '#a8d08d'; // Добавляем зеленый оттенок для успешного копирования
+            
+            // Возврат в исходное состояние
+            setTimeout(() => {
+                icon.innerText = 'content_copy';
+                icon.style.color = ''; 
+            }, 2000);
         }
     </script>
 </body>
